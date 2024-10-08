@@ -17,7 +17,10 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("DiscouragedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.i("Lifecycle!!!!","oncreate")
         enableEdgeToEdge()
+
         //setContentView(R.layout.activity_main)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
@@ -65,6 +68,36 @@ class MainActivity : AppCompatActivity() {
         }
         return "c_${number}_of_${shape}"
     }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("Lifecycle!!!", "onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("Lifecycle!!!", "onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("Lifecycle!!!", "onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("Lifecycle!!!", "onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("Lifecycle!!!", "onRestart")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("Lifecycle!!!", "onDestroy")
+    }
 }
 //        R{
 //            drawable{
@@ -77,3 +110,6 @@ class MainActivity : AppCompatActivity() {
 //        xml: @drawble/c_of_heart
 //        kotlin: R.drawble.c_of_heart
 //android 는 세상에 하나뿐인 걸 나타내기 위해서 나타냄
+//margin 이랑 padding 중요 경치는 가운데로 찍기 때문에 land(가로)scape
+//portrait(초상화->세로)
+//onstart와 onresume은 기존껄 사용
