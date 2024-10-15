@@ -9,22 +9,136 @@
     android:background="#dd0"
     tools:context=".MainActivity">
 
+<!--    //초기-->
+<!--    <ImageView-->
+<!--        android:id="@+id/img_card1"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:src="@drawable/c_red_joker"-->
+<!--        android:text="Hello World!"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/btn_deal"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+<!--    //(2)세로로 바꾸기-->
     <ImageView
         android:id="@+id/img_card1"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="5dp"
         android:src="@drawable/c_red_joker"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toTopOf="@id/btn_deal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/img_card3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/img_card2"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_card2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/c_red_joker"
+        app:layout_constraintBottom_toBottomOf="@id/img_card1"
+        app:layout_constraintLeft_toRightOf="@id/img_card1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/img_card1" />
+
+    <ImageView
+        android:id="@+id/img_card3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/c_red_joker"
+        app:layout_constraintBottom_toTopOf="@id/img_card5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/img_card4"
+        app:layout_constraintTop_toBottomOf="@id/img_card1" />
+
+    <ImageView
+        android:id="@+id/img_card4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/c_red_joker"
+        app:layout_constraintBottom_toBottomOf="@id/img_card3"
+        app:layout_constraintLeft_toRightOf="@id/img_card3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/img_card3" />
+
+    <ImageView
+        android:id="@+id/img_card5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/c_red_joker"
+        android:baselineAlignBottom="true"
+        app:layout_constraintBottom_toTopOf="@id/btn_deal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_card3" />
+
+
+    <!--    //(3)constraint start, end, top, bottom 으로도 할 수 있음-->
+<!--    <ImageView-->
+<!--        android:id="@+id/img_card1"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:src="@drawable/c_red_joker"-->
+<!--        app:layout_constraintStart_toTopOf="@id/img_card2"-->
+<!--        app:layout_constrainEnd_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toLeftOf="@id/img_card2"-->
+<!--        app:layout_constraintBottom_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_card2"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:src="@drawable/c_red_joker"-->
+<!--        app:layout_constraintStart_toStartOf="@id/img_card2"-->
+<!--        app:layout_constrainEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@id/img_card2"-->
+<!--        app:layout_constraintBottom_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_card3"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:src="@drawable/c_red_joker"-->
+<!--        app:layout_constraintStart_toTopOf="@id/img_card3"-->
+<!--        app:layout_constrainEnd_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toLeftOf="@id/img_card2"-->
+<!--        app:layout_constraintBottom_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_card4"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:src="@drawable/c_red_joker"-->
+<!--        app:layout_constraintStart_toTopOf="@id/img_card3"-->
+<!--        app:layout_constrainEnd_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toLeftOf="@id/img_card2"-->
+<!--        app:layout_constraintBottom_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_card5"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:src="@drawable/c_red_joker"-->
+<!--        android:baselineAlignBottom="true"-->
+<!--        app:layout_constraintStart_toTopOf="@id/img_card3"-->
+<!--        app:layout_constrainEnd_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toLeftOf="@id/img_card2"-->
+<!--        app:layout_constraintBottom_toTopOf="parent" />-->
+
 
     <Button
         android:id="@+id/btn_deal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:text="카드 분배"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
