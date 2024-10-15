@@ -8,6 +8,7 @@ import androidx.annotation.Discouraged
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import kr.ac.kumoh.s20191091.s24w4card.databinding.ActivityMainBinding
 import kotlin.random.Random
 
@@ -25,7 +26,41 @@ class MainActivity : AppCompatActivity() {
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
 
+        val model = ViewModelProvider(this)[CardViewModel::class.java]
+
+        val res = IntArray(5)
+
+        model.cards.forEachIndexed{index, num->
+            res[index] = resources.getIdentifier(
+                getCardName(num),
+                "drawable",
+                packageName
+            )
+        }
+//        for (i in model.cards.indices) {//index에 복수형
+//            res[i] = resources.getIdentifier(
+//                getCardName(model.cards[i]),
+//                "drawable",
+//                packageName
+//            )
+//        }
+
+        mainBinding.imgCard1.setImageResource(res[0])
+        mainBinding.imgCard2.setImageResource(res[1])
+        mainBinding.imgCard3.setImageResource(res[2])
+        mainBinding.imgCard4.setImageResource(res[3])
+        mainBinding.imgCard5.setImageResource(res[4])
+
         mainBinding.btnDeal.setOnClickListener {
+            model.shuffle()
+
+            model.cards.forEachIndexed{index, num->
+                res[index] = resources.getIdentifier(
+                    getCardName(num),
+                    "drawable",
+                    packageName
+                )
+            }
 //            (1)
 //            mainBinding.imgCard1.setImageResource(R.drawable.c_2_of_hearts)
 //            Log.i("CARD!!", "c: ${getCardName(32)}")
@@ -42,24 +77,25 @@ class MainActivity : AppCompatActivity() {
 //            mainBinding.imgCard1.setImageResource(res)
             
 //          (3)
-            val c = IntArray(5)
-            val res = IntArray(5)
+//            val c = IntArray(5)
+//            val res = IntArray(5)
 
             //for (i in 0..4)0부터4까지
             //for (i in 0 until 5)
             //for (i in 0 until c.size)
-            for (i in c.indices) {//index에 복수형
-                c[i] = Random.nextInt(52)
+//            for (i in c.indices) {//index에 복수형
+//                c[i] = Random.nextInt(52)
+//
+//                Log.i("Test", "${c[i]} : " +
+//                        "${getCardName(c[i])}")
+//
+//                res[i] = resources.getIdentifier(
+//                    getCardName(c[i]),
+//                    "drawable",
+//                    packageName
+//                )
+//            }
 
-                Log.i("Test", "${c[i]} : " +
-                        "${getCardName(c[i])}")
-
-                res[i] = resources.getIdentifier(
-                    getCardName(c[i]),
-                    "drawable",
-                    packageName
-                )
-            }
 
             mainBinding.imgCard1.setImageResource(res[0])
             mainBinding.imgCard2.setImageResource(res[1])
