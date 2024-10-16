@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         val res = IntArray(5)
 
-        model.cards.forEachIndexed{index, num->
+        model.cards.value!!.forEachIndexed{index, num->
             res[index] = resources.getIdentifier(
                 getCardName(num),
                 "drawable",
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         mainBinding.btnDeal.setOnClickListener {
             model.shuffle()
 
-            model.cards.forEachIndexed{index, num->
+            model.cards.value!!.forEachIndexed{index, num->
                 res[index] = resources.getIdentifier(
                     getCardName(num),
                     "drawable",
