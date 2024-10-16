@@ -137,7 +137,14 @@ class MainActivity : AppCompatActivity() {
             else -> "error"
 
         }
-        return "c_${number}_of_${shape}"
+
+        //(1) return "c_${number}_of_${shape}"
+
+        return if (c % 13 in 10..12)
+            "c_${number}_of_${shape}2"
+        else
+            "c_${number}_of_${shape}"
+        //코틀린은 삼항연산자가 없어서 이렇게 사용
     }
 
     override fun onStart() {
