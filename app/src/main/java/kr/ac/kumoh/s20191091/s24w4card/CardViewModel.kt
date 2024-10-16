@@ -22,7 +22,7 @@ class CardViewModel : ViewModel() {//()도 붙여야함
 //            _cards[i] = Random.nextInt(52)
 
         for (i in newCards.indices)
-        // TODO: 중복 및 정렬 처리
+//         TODO: 중복 및 정렬 처리
             newCards[i] = Random.nextInt(52)
 
         _cards.value = newCards

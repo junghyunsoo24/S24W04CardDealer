@@ -8,6 +8,7 @@ import androidx.annotation.Discouraged
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kr.ac.kumoh.s20191091.s24w4card.databinding.ActivityMainBinding
 import kotlin.random.Random
@@ -27,32 +28,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(mainBinding.root)
 
         val model = ViewModelProvider(this)[CardViewModel::class.java]
-
-        val res = IntArray(5)
-
-        model.cards.value!!.forEachIndexed{index, num->
-            res[index] = resources.getIdentifier(
-                getCardName(num),
-                "drawable",
-                packageName
-            )
-        }
-//        for (i in model.cards.indices) {//index에 복수형
-//            res[i] = resources.getIdentifier(
-//                getCardName(model.cards[i]),
-//                "drawable",
-//                packageName
-//            )
-//        }
-
-        mainBinding.imgCard1.setImageResource(res[0])
-        mainBinding.imgCard2.setImageResource(res[1])
-        mainBinding.imgCard3.setImageResource(res[2])
-        mainBinding.imgCard4.setImageResource(res[3])
-        mainBinding.imgCard5.setImageResource(res[4])
-
-        mainBinding.btnDeal.setOnClickListener {
-            model.shuffle()
+        model.cards.observe(this, Observer {
+            val res = IntArray(5)
 
             model.cards.value!!.forEachIndexed{index, num->
                 res[index] = resources.getIdentifier(
@@ -61,6 +38,33 @@ class MainActivity : AppCompatActivity() {
                     packageName
                 )
             }
+//        for (i in model.cards.indices) {//index에 복수형
+//            res[i] = resources.getIdentifier(
+//                getCardName(model.cards[i]),
+//                "drawable",
+//                packageName
+//            )
+//        }
+
+            mainBinding.imgCard1.setImageResource(res[0])
+            mainBinding.imgCard2.setImageResource(res[1])
+            mainBinding.imgCard3.setImageResource(res[2])
+            mainBinding.imgCard4.setImageResource(res[3])
+            mainBinding.imgCard5.setImageResource(res[4])
+        })
+        //람다식으로 {}를 씀
+
+        mainBinding.btnDeal.setOnClickListener {
+            model.shuffle()
+
+//  obserber로 인해 사용x          model.cards.value!!.forEachIndexed{index, num->
+//                res[index] = resources.getIdentifier(
+//                    getCardName(num),
+//                    "drawable",
+//                    packageName
+//                )
+//            }
+
 //            (1)
 //            mainBinding.imgCard1.setImageResource(R.drawable.c_2_of_hearts)
 //            Log.i("CARD!!", "c: ${getCardName(32)}")
@@ -96,12 +100,12 @@ class MainActivity : AppCompatActivity() {
 //                )
 //            }
 
-
-            mainBinding.imgCard1.setImageResource(res[0])
-            mainBinding.imgCard2.setImageResource(res[1])
-            mainBinding.imgCard3.setImageResource(res[2])
-            mainBinding.imgCard4.setImageResource(res[3])
-            mainBinding.imgCard5.setImageResource(res[4])
+//observer로 인해 사용x
+//            mainBinding.imgCard1.setImageResource(res[0])
+//            mainBinding.imgCard2.setImageResource(res[1])
+//            mainBinding.imgCard3.setImageResource(res[2])
+//            mainBinding.imgCard4.setImageResource(res[3])
+//            mainBinding.imgCard5.setImageResource(res[4])
             //카드에 중복 처리는 되지 않음
             //회전 시, 카드가 초기화됨
         }
