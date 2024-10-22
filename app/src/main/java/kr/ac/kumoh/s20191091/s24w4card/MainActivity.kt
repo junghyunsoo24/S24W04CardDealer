@@ -27,15 +27,26 @@ class MainActivity : AppCompatActivity() {
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
 
+        val imgcards = arrayOf(
+            mainBinding.imgCard1,
+            mainBinding.imgCard2,
+            mainBinding.imgCard3,
+            mainBinding.imgCard4,
+            mainBinding.imgCard5
+        )
+
         val model = ViewModelProvider(this)[CardViewModel::class.java]
+
         model.cards.observe(this, Observer {
-            val res = IntArray(5)
+//            val res = IntArray(5)
 
             model.cards.value!!.forEachIndexed{index, num->
-                res[index] = resources.getIdentifier(
+                imgcards[index].setImageResource(
+                    resources.getIdentifier(
                     getCardName(num),
                     "drawable",
                     packageName
+                    )
                 )
             }
 //        for (i in model.cards.indices) {//index에 복수형
@@ -46,11 +57,12 @@ class MainActivity : AppCompatActivity() {
 //            )
 //        }
 
-            mainBinding.imgCard1.setImageResource(res[0])
-            mainBinding.imgCard2.setImageResource(res[1])
-            mainBinding.imgCard3.setImageResource(res[2])
-            mainBinding.imgCard4.setImageResource(res[3])
-            mainBinding.imgCard5.setImageResource(res[4])
+//            mainBinding.imgCard1.setImageResource(res[0])
+//            mainBinding.imgCard2.setImageResource(res[1])
+//            mainBinding.imgCard3.setImageResource(res[2])
+//            mainBinding.imgCard4.setImageResource(res[3])
+//            mainBinding.imgCard5.setImageResource(res[4])
+
         })
         //람다식으로 {}를 씀
 
