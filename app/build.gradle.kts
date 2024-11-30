@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "kr.ac.kumoh.s20191091.s24w4card"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "kr.ac.kumoh.s20191091.s24w4card"
@@ -35,6 +35,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
