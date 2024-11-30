@@ -42,14 +42,16 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-//        model.cardRank.observe(this, Observer { rank ->
-//            mainBinding.textRank?.text ?:  = rank.ifEmpty { "족보를 확인할 수 없습니다" }
-//        })
-
         mainBinding.btnDeal.setOnClickListener {
             model.shuffle()
             model.check()
         }
+
+        model.cardRank.observe(this, Observer {
+            if(model.cardRank.value != ""){
+            mainBinding.textRank.text = model.cardRank.value
+            }
+        })
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
